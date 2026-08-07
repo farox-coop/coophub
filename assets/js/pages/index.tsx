@@ -10,7 +10,7 @@ import LanguagesChart from '../components/LanguagesChart';
 import _ from "lodash";
 import getLangColor from '../languageColors';
 import CountUp from 'react-countup';
-import {GoGlobe, GoCode} from "react-icons/all";
+import {GoGlobe, GoCode} from "react-icons/go";
 import { mostReadable, TinyColor} from '@ctrl/tinycolor';
 
 

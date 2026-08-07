@@ -38,7 +38,7 @@ Available environments:
 | ------------------ | ------------- |
 | GITHUB_OAUTH_TOKEN |               |
 | VERSION_ELIXIR     | 1.15          |
-| VERSION_NODE       | 22            |
+| VERSION_NODE       | 24            |
 
 Steps:
 - Clone this repository
@@ -49,7 +49,7 @@ It uses the Elixir [Phoenix Framework](https://phoenixframework.org/) for the ba
 Then, to run this app you will need:
 - Erlang OTP >= 26
 - Elixir >= 1.15
-- NodeJS >= 22
+- NodeJS >= 24
 
 ### Run it!
 - Install dependencies with `mix deps.get`
@@ -83,3 +83,44 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 3. Click the `Publish release` button and check that a new [github action](https://github.com/fiqus/coophub/actions?query=workflow%3A%22CI+-+Build+release+asset%22) was started for this release.
 4. When the github action finishes, a [release asset](https://github.com/fiqus/coophub/releases/latest) should be attached (like `coophub-20200330-034316-0635b9c7.tar.gz`).
 5. Done! Just wait a few minutes and the new release will be deployed to https://coophub.io (you can check the version at site footer).
+
+---
+
+## Working with the `fiqus <=> farox` fork
+
+#### 1. Rename original as "upstream"
+```
+git remote rename origin upstream
+```
+
+#### 2. Add your fork as the new "origin"
+```
+git remote add origin git@github.com:farox-coop/coophub.git
+```
+
+#### 3. Verify
+```
+git remote -v
+# upstream  git@github.com:fiqus/coophub.git (fetch)
+# upstream  git@github.com:fiqus/coophub.git (push)
+# origin    git@github.com:farox-coop/coophub.git (fetch)
+# origin    git@github.com:farox-coop/coophub.git (push)
+```
+
+#### Then push to fork
+```
+git push -u origin master
+```
+
+Then, to bring the changes to the original (deploy to `coophub.io`):
+
+1. Go to https://github.com/farox-coop/coophub
+2. Click "Pull Request" → `farox-coop/coophub:master` → `fiqus/coophub:master`
+3. When merged, the fiqus/coophub CI launches `build + deploy` to `coophub.io` automatically.
+
+#### To keep the fork synchronized in the future
+```
+git fetch upstream
+git merge upstream/master
+git push origin master
+```
