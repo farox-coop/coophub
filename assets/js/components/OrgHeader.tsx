@@ -1,17 +1,18 @@
 import React from 'react';
 import {Container, ButtonGroup, Button, CardLink, Row, Col} from "reactstrap";
-import {GoLocation, GoLink, GoMail, IoMdCalendar, GoMarkGithub, AiOutlineGitlab} from "react-icons/all";
+import {GoLocation, GoLink, GoMail, GoCode, GoStar} from "react-icons/go";
+import {IoMdCalendar} from "react-icons/io";
+import {AiOutlineGitlab, AiFillGithub} from "react-icons/ai";
 import {Org} from "../types";
 import LanguagesProgressBar from './LanguagesProgressBar';
 import CountUp from 'react-countup';
-import {GoCode, GoStar} from "react-icons/all";
 
 const OrgHeader:React.FC<{org: Org, maxLanguages: number}> = ({org, maxLanguages}) => {
     const orgDate = new Date(org.created_at);
     const createdDate = `${orgDate.toLocaleString('en', { month: 'long' })} ${orgDate.getFullYear()}`;
     const location = org.yml_data.location || org.location;
 
-    let sourceBtn = <GoMarkGithub />;
+    let sourceBtn = <AiFillGithub />;
     if (["gitlab", "git.coop"].includes(org.yml_data.source)) {
         sourceBtn = <AiOutlineGitlab />;
     }

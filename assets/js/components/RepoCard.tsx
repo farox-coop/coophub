@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardHeader, CardBody, CardLink, CardText, CardFooter, Button} from "reactstrap";
-import {GoRepoForked, GoStar} from "react-icons/all";
+import {GoRepoForked, GoStar} from "react-icons/go";
 import {Repo} from "../types";
 import getLangColor from '../languageColors';
 import Emoji from "react-emoji-render";
